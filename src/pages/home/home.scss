@@ -1,0 +1,23 @@
+page-home {
+    #map {
+    height: 100%;
+    width: 100%;
+  }
+  .playlevel{
+        background: #ffffff;
+        background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+        background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+        background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+        background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+        background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+        -webkit-border-radius: 20;
+        -moz-border-radius: 20;
+        border-radius: 20px;
+        font-family: Arial;
+        color: #1481a8;
+        font-size: 14px;
+        padding: 10px 23px 10px 20px;
+        border: solid #2885bf 2px;
+        text-decoration: none;
+  }
+}
