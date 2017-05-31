@@ -13,7 +13,6 @@ declare var google;
   templateUrl: 'home.html'
 })
 export class HomePage {
-  // @ViewChild('map') mapElement: ElementRef;
   map: any;
   response: any;
   curLat: any;
@@ -24,11 +23,6 @@ export class HomePage {
       this.loadMap1();
     })
   }
-
-//   ngOnInit(){
-    
-//     this.loadMap1();
-// }
 
  loadMap1(){
 
@@ -45,74 +39,54 @@ export class HomePage {
             
                   this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
                   this.locations.markers().subscribe( data => {
-                  // console.log(data);
+                  // alert(data);
                   this.response = data;
-                  this.response = JSON.parse(this.response._body);
                   let markLength = this.response.markers;
-                  // console.log(markLength.length);
-                  //  let latLng = new google.maps.LatLng(this.response.markers[0].lat, this.response.markers[0].lng);
-                  //  let mapOptions = {
-                  //                 center: latLng,
-                  //                 zoom: 15,
-                  //                 mapTypeId: google.maps.MapTypeId.ROADMAP
-                  //               }
-                          
-                  //               this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                                // this.addMarker(latLng);
                   for(let i=0; i<this.response.markers.length; i++){
-                  // console.log(this.response.markers[i].lng);
-                  let latLng = new google.maps.LatLng(this.response.markers[i].lat, this.response.markers[i].lng);
-                  let img = this.response.markers[i].user_avatar_url;
-                  let nicename = this.response.markers[i].nicename;
-                  let playlevel = this.response.markers[i].playlevel;
-                  this.addMarker(latLng, img, nicename, playlevel);
-                }
+                      let latLng = new google.maps.LatLng(this.response.markers[i].lat, this.response.markers[i].lng);
+                      let img = this.response.markers[i].user_avatar_url;
+                      let first_name = this.response.markers[i].first_name;
+                      let last_name = this.response.markers[i].last_name;
+                      let nicename = this.response.markers[i].nicename;
+                      let hometown = this.response.markers[i].hometown;
+                      let currentloc = this.response.markers[i].currentloc;
+                      let playlevel = this.response.markers[i].playlevel;
+                      let ntrp = this.response.markers[i].ntrp;
+                      let mainsport = this.response.markers[i].mainsport;
+                      let description = this.response.markers[i].description;
+                      this.addMarker(latLng, img, first_name, last_name, nicename, hometown, currentloc, playlevel, ntrp, mainsport, description);
+                  }
+                  this.locations.closeLoading();
                 })      
-                      
-                    }, (err) => {
+              }, (err) => {
                           console.log(JSON.stringify(err));
-                  });
-   
-    
-   
+              });
     }
-addMarker(latLng, img, nicename, playlevel){
-  // let image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+addMarker(latLng, img, first_name, last_name, nicename, hometown, currentloc, playlevel, ntrp, mainsport, description){
 
   let marker = new google.maps.Marker({
         map: this.map,
-        position: latLng,
-        // icon: {
-        //       path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-        //       fillColor: '#FF0000',
-        //       fillOpacity: 1,
-        //       strokeWeight: 1,
-        //       scale: .8,
-        //       text: "57"
-        //     },
-        //     label: "B"
+        position: latLng
       });
-      // let coordinate = this.map.getCenter();
  
-    let content = "<img src='"+img+"' alt='Smiley face' height='180' width='180'><h4>"+nicename+"</h4><a href='https://www.google.com'><h5>See "+nicename+"'s full profile</h5></a><p>Play Level</p><button type='button' class='playlevel'>"+playlevel+"</button>";          
-  
-    this.addInfoWindow(marker, content);
- 
-}
+    
+    this.addInfoWindow(marker, img, first_name, last_name, nicename, hometown, currentloc, playlevel, ntrp, mainsport, description);
+  }
 
-  addInfoWindow(marker, content){
- 
-  
-  
+  addInfoWindow(marker, img, first_name, last_name, nicename, hometown, currentloc, playlevel, ntrp, mainsport, description){
     google.maps.event.addListener(marker, 'click', (event) => {
       let latlng = event.latLng;
-      // console.log("event", latlng.lat(), latlng.lng());
       let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.curLat, this.curLon), new google.maps.LatLng(latlng.lat(), latlng.lng()));
       distance = distance/1000;
       distance = distance.toFixed(2);
+      let locateIcon = document.getElementById('locate-icon');
+      let personIcon = document.getElementById('person-icon');
+      let content = "<div>" + "<a href='https://racketfriends.com/profile/?" + nicename + "/about'><img src="+img+"></a></div>" + "<h5>" + first_name + " " + last_name + ", " + hometown + "</h5><br><a href='https://racketfriends.com/profile/?" + nicename + "/about' class='link-popup'>"+personIcon.innerHTML+" See " + first_name + "'s full profile</a><br><p>"+locateIcon.innerHTML+" CURRENT LOCATION: </p><span class='currentloc'>" + currentloc + ", ~" + distance + " km away</span><br><p>PLAY LEVEL: </p><span class='playlevel "+ playlevel +"'>" + playlevel + " </span><span class='ntrp "+ playlevel +"'>" + ntrp + "</span><br><p>PLAYS:</p> " + "<h5>" + mainsport + " </h5><div class='racketsports'>" + description + ".. </div>";
+      
       let infoWindow = new google.maps.InfoWindow({
-        content: content+"<p>current location</p><button type='button' class='playlevel'>~ "+distance+" km away</button>"
+        content: content
         });
+
       infoWindow.open(this.map, marker);
     });
   }

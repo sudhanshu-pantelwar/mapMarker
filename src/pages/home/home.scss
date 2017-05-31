@@ -3,21 +3,100 @@ page-home {
     height: 100%;
     width: 100%;
   }
-  .playlevel{
-        background: #ffffff;
-        background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
-        background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
-        background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
-        background-image: -o-linear-gradient(top, #ffffff, #ffffff);
-        background-image: linear-gradient(to bottom, #ffffff, #ffffff);
-        -webkit-border-radius: 20;
-        -moz-border-radius: 20;
-        border-radius: 20px;
-        font-family: Arial;
-        color: #1481a8;
-        font-size: 14px;
-        padding: 10px 23px 10px 20px;
-        border: solid #2885bf 2px;
-        text-decoration: none;
-  }
+  // .playlevel{
+  //       background: #ffffff;
+  //       background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  //       background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  //       background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  //       background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  //       background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+  //       -webkit-border-radius: 20;
+  //       -moz-border-radius: 20;
+  //       border-radius: 20px;
+  //       font-family: Arial;
+  //       color: #1481a8;
+  //       font-size: 14px;
+  //       padding: 10px 23px 10px 20px;
+  //       border: solid #2885bf 2px;
+  //       text-decoration: none;
+  // }
+  body {
+        font-family:"museo-slab", sans-serif; color: darkgray; font-size: 14px;
+    }    
+    h1 {
+        font-size: 18px;
+        font-weight: 700;
+        color: black;
+    }
+    h2 {
+        font-size: 18px;
+        font-weight: 700;
+        color: darkgray;
+    }
+    h5 {
+        margin-top: 0;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+    p {
+        font-size: 10px;
+        margin: 10px 0 5px;
+        width: 180px;
+    }
+    a.link-popup:link { color:cornflowerblue; text-decoration:none; font-weight:400; 
+    }
+    a.link-popup:visited { color:cornflowerblue; text-decoration:none; font-weight:400; 
+    }
+    a.link-popup:hover { color:cornflowerblue; text-decoration:underline; font-weight:400; 
+    }
+    a.link-popup:active { color:cornflowerblue; text-decoration:none; font-weight:400; 
+    }
+	.playlevel{
+	border-radius: 20px;
+    padding: 8px;
+    border: solid 2px;
+    font-weight: 400;
+    line-height: 300%;
+	}
+	.ntrp {
+	border-radius: 20px;
+    padding: 8px;
+    border: solid 2px;
+    font-weight: 400;
+    line-height: 300%;
+	margin-left: 4px;
+	margin-bottom: 6px;
+	}
+    .Beginner {
+    color: #0094bb;
+	border-color: #0094bb;
+    }
+    .Intermediate {
+    color: cornflowerblue;
+	border-color: cornflowerblue;
+    }
+    .Advanced {
+    color: deeppink;
+	border-color: deeppink
+    }
+    .racketsports {
+	width: 180px;
+    margin-top: 0;
+    }
+	.description {
+    color: darkgray;
+    font-weight: 100;
+    line-height: 140%;
+	width: 180px;
+    }
+    .currentloc {
+	border-radius: 20px;
+    padding: 8px;
+    border: solid 2px;
+    font-weight: 400;
+    line-height: 300%;
+    border-color: cornflowerblue;
+    color: cornflowerblue;
+    }
 }
