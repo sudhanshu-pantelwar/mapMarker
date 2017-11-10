@@ -56,7 +56,7 @@ export class HomePage {
         })
       }, (err) => {
         console.log(JSON.stringify(err));
-        console.log('Branch');
+        console.log('Branch 2');
       });
     }
     
